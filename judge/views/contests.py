@@ -412,7 +412,7 @@ class ContestClone(ContestMixin, PermissionRequiredMixin, TitleMixin, SingleObje
             for problem in contest_problems:
                 problem.contest = contest
                 problem.pk = None
-            ContestProblem.objects.bulk_create(contest_problems)
+                problem.save()
 
             revisions.set_user(self.request.user)
             revisions.set_comment(_('Cloned contest from %s') % old_key)
